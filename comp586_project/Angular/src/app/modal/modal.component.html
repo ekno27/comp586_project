@@ -1,0 +1,35 @@
+<div id="results-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" id="modal">
+        <div class="modal-header">
+
+          <h2 class="modal-title">Item not found, please add!</h2>
+        </div>
+        <div class="modal-body">
+          <h5>Shelf Life</h5>
+          <input type="text" id="shelflife" class="form-control" required>
+          <h5>Category</h5>
+          <form>
+            <div class="form-group">
+
+              <select class="form-control" id="category">
+                <option>Produce</option>
+                <option>Meat</option>
+                <option>Dairy</option>
+                <option>Other</option>
+              </select>
+
+            </div>
+          </form>
+          <button type="button" class="btn btn-outline-success" id="modalSubmit" data-dismiss="modal">Submit
+            <i class="far fa-arrow-alt-circle-up"></i>  
+          </button>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>

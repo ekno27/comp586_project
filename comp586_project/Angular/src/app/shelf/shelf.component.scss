@@ -1,115 +1,115 @@
 #navbar {
-  font-family: 'Poiret One', cursive;
-  font-size: 18pt; 
-  
-  top: 0px;
-  right: 0px;
-  margin-bottom: 3%;
+    font-family: 'Poiret One', cursive;
+    font-size: 18pt; 
+    
+    top: 0px;
+    right: 0px;
+    margin-bottom: 3%;
 }
 
 .text-right{
-  margin-right: 20px;
+    margin-right: 20px;
 }
 
 .exp-column{
-  padding-right: 15px;
+    padding-right: 15px;
 }
 
 .delete{
-  margin-left: 3%;
+    margin-left: 3%;
 }
 
 #empty-prompt,.exp-hd{
-  text-align: center;
+    text-align: center;
 }
 
 #mainWrapper {
-  margin-top: 50px; 
-  font-family: 'Poiret One';
-  font-weight: bold; 
+    margin-top: 50px; 
+    font-family: 'Poiret One';
+    font-weight: bold; 
 }
 
 #header {
-  margin:auto;  
-  font-family: 'Poiret One', cursive;
-  font-size: 50pt; 
+    margin:auto;  
+    font-family: 'Poiret One', cursive;
+    font-size: 50pt; 
 }
 
 #logHeader {
-  margin: auto; 
-  width: 50%; 
-  font-family: 'Poiret One', cursive;
-  font-size: 50pt; 
-  text-align: center;
+    margin: auto; 
+    width: 50%; 
+    font-family: 'Poiret One', cursive;
+    font-size: 50pt; 
+    text-align: center;
 }
 
 #miniWrapper {
-  margin: auto; 
-  width: 500px; 
+    margin: auto; 
+    width: 500px; 
 }
 
 #input {
-  font-family: 'Roboto'; 
-  font-size: 20pt; 
-  margin-left: 20px;
-  margin-right: 20px;
-  
+    font-family: 'Roboto'; 
+    font-size: 20pt; 
+    margin-left: 20px;
+    margin-right: 20px;
+    
 }
 
 #submitButton {
-  font-weight: bolder; 
-   
+    font-weight: bolder; 
+     
 }
 
 #submit {
-  margin-top:40px; 
-  font-weight: bolder; 
-  
+    margin-top:40px; 
+    font-weight: bolder; 
+    
 }
 
 #login {
-  margin-top:40px; 
-  padding: 7px; 
-  float: left; 
+    margin-top:40px; 
+    padding: 7px; 
+    float: left; 
 }
 
 #logInWrapper {
-  margin:auto; 
-  width: 300px; 
-  height:auto; 
-  border-radius: 25px;
-  border: 2px solid rgba(217, 223, 209, 0.445);
-  padding: 50px; 
-  box-shadow: 5px 5px 4px 4px rgba(153, 145, 145, 0.644);
+    margin:auto; 
+    width: 300px; 
+    height:auto; 
+    border-radius: 25px;
+    border: 2px solid rgba(217, 223, 209, 0.445);
+    padding: 50px; 
+    box-shadow: 5px 5px 4px 4px rgba(153, 145, 145, 0.644);
 
 }
 #user{
-  padding-left: 2rem;
+    padding-left: 2rem;
 }
 
 #userList {
-  margin: auto; 
-  margin-top: 40px; 
-  width: 500px; 
+    margin: auto; 
+    margin-top: 40px; 
+    width: 500px; 
 
 }
 
 
 table {
-  width: 100%;
+    width: 100%;
 }
 
 th {
-  height: 50px;
-  padding:15px; 
-  border-bottom: 1px solid #ddd; 
-  background-color: #18bb9c; 
-  color: white; 
+    height: 50px;
+    padding:15px; 
+    border-bottom: 1px solid #ddd; 
+    background-color: #18bb9c; 
+    color: white; 
 }
 
 td {
-  padding:15px; 
-  border-bottom: 1px solid #ddd;
+    padding:15px; 
+    border-bottom: 1px solid #ddd;
 }
 
 tr:nth-child(even) {background-color: #dad2d28a;}
