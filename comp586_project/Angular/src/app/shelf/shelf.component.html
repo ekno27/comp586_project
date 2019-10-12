@@ -11,49 +11,47 @@
     </li>
   </ul>
 </div>
-<div class="container" id="mainWrapper">  
+<div class="container" id="mainWrapper">
   <!-- Header -->
   <div class="row">
-      <div id="header">
-        <p class="text-success">Xpire<i class="fab fa-pagelines"></i></p>
-      </div>
-  </div> <!-- end of row-->  
+    <div id="header">
+      <p class="text-success">Xpire<i class="fab fa-pagelines"></i></p>
+    </div>
+  </div> <!-- end of row-->
 
 
   <div class="row">
-      <div id="miniWrapper">
-        <!-- Input Field -->
-        <div id="input">
-          <h5>Insert a food item here:</h5>
-          <input type="text" id="foodItem" class="form-control" required placeholder="ex. eggs">
-        </div>
-        <!-- Submit Button -->
-        <div class="text-right">
-          <button type="button" class="btn btn-outline-success" id="submitButton">Submit
-            <i class="far fa-arrow-alt-circle-up"></i>
-          </button>
-        </div>
+    <div id="miniWrapper">
+      <!-- Input Field -->
+      <div id="input">
+        <h5>Insert a food item here:</h5>
+        <input type="text" id="foodItem" class="form-control" required placeholder="ex. eggs">
       </div>
-  
+      <!-- Submit Button -->
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-success" id="submitButton">Submit
+          <i class="far fa-arrow-alt-circle-up"></i>
+        </button>
+      </div>
+    </div>
 
 
-      <!-- displays the user's list of items -->
-      <div class="container" id="userList">
-          <table>
-            <tr>
-              <th>Name</th>
-              <th>Shelflife</th>
-              <th class="exp-hd" class="exp-column">Expiration</th>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td>10 days</td>
-              <td class="exp-column exp-hd">expiraation <button class="delete btn btn-success" apiId="apiid"
-                  loginId="loginid"><i class="fas fa-minus"></i></button> </td>
-            </tr>
-            <h2 id="empty-prompt">There are currently no items on your list!</h2>
-          </table>
-        </div>
-    
-        
-  
+    <!-- displays the user's list of items -->
+    <div class="container" id="userList">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Shelflife</th>
+          <th class="exp-hd" class="exp-column">Expiration</th>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>10 days</td>
+          <td class="exp-column exp-hd">expiraation <button class="delete btn btn-success" apiId="apiid"
+              loginId="loginid"><i class="fas fa-minus"></i></button> </td>
+        </tr>
+        <h2 id="empty-prompt">There are currently no items on your list!</h2>
+      </table>
+    </div>
+  </div>
+</div>
