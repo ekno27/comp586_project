@@ -2,13 +2,24 @@
   margin-top: 50px;
   font-family: 'Poiret One';
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  // height: 100%;
 }
 
+.text-success {
+  margin-left: 26px;
+}
 #header {
-  margin: auto;
+  // margin: auto;
   font-family: 'Poiret One', cursive;
   font-size: 50pt;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  // width: 100%;
+}
+
+.login-button {
+  // position:relative;
+  font-size: 30px;
 }

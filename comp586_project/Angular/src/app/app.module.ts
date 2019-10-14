@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import {ModalComponent} from './modal/modal.component'
 
+
 @NgModule({
   declarations: [
     AppComponent,
