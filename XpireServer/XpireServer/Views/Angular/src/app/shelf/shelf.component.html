@@ -25,7 +25,7 @@
       <!-- Input Field -->
       <div id="input">
         <h5>Insert a food item here: </h5>
-        <input type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
+        <input [(ngModel)]="groceryItem" type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
       </div>
       <!-- Submit Button -->
       <div class="text-right">
@@ -45,8 +45,8 @@
         </tr>
         <tr *ngFor="let key of items">
           <td>{{key.name}}</td>
-          <td>{{key.shelf_life}}</td>
-          <td class="exp-column exp-hd">{{key.Expiration}} 
+          <td>{{key.shelfLife}}</td>
+          <td class="exp-column exp-hd">{{key.expirationDate}} 
             <button (click)="deleteItem()" class="delete btn btn-success" apiId="apiid"
               loginId="loginid"><i class="fas fa-minus"></i>
             </button> 

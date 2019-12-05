@@ -1,10 +1,13 @@
 import axios from 'axios';
 
 export default {
-  addItemAPI() {
-    return axios.get("http://www.mocky.io/v2/5da379082f000050008a07a4")
+  addItemAPI(body) {
+    return axios.post('https://localhost:44366/api/GroceryItems/', body)
   },
   deleteItemAPI() {
-    return axios.delete('"http://www.mocky.io/v2/5da379082f000050008a07a4')
+    return axios.delete('https://localhost:44366/api/GroceryItems/')
+  },
+  getItemsAPI() {
+    return axios.get('https://localhost:44366/api/GroceryItems/')
   }
 }
