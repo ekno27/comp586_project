@@ -1,0 +1,59 @@
+<!-- Nav Bar -->
+<div id="navbar">
+  <ul class="nav  d-flex flex-row-reverse ">
+
+    <li class="nav-item pull-right">
+      <a class="nav-link" [routerLink]="['']">Log Out</a>
+    </li>
+
+    <li class="nav-item ">
+      <a class="nav-link active" id="user" href="#" userId="alex">Welcome, alex</a>
+    </li>
+  </ul>
+</div>
+<div class="container" id="mainWrapper">
+  <!-- Header -->
+  <div class="row">
+    <div id="header">
+      <p class="text-success">Xpire<i class="fab fa-pagelines"></i></p>
+    </div>
+  </div> <!-- end of row-->
+
+
+  <div class="row">
+    <div id="miniWrapper">
+      <!-- Input Field -->
+      <div id="input">
+        <h5>Insert a food item here: </h5>
+        <input type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
+      </div>
+      <!-- Submit Button -->
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-success" (click)="addItem()">Submit
+          <i class="far fa-arrow-alt-circle-up"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- displays the user's list of items -->
+    <div class="container" id="userList">
+      <table *ngIf="!shelfIsEmpty" >
+        <tr>
+          <th>Name</th>
+          <th>Shelflife</th>
+          <th class="exp-hd" class="exp-column">Expiration</th>
+        </tr>
+        <tr *ngFor="let key of items">
+          <td>{{key.name}}</td>
+          <td>{{key.shelf_life}}</td>
+          <td class="exp-column exp-hd">{{key.Expiration}} 
+            <button (click)="deleteItem()" class="delete btn btn-success" apiId="apiid"
+              loginId="loginid"><i class="fas fa-minus"></i>
+            </button> 
+            </td>
+        </tr>
+      </table>
+      <h2 *ngIf="shelfIsEmpty" id="empty-prompt">There are currently no items on your list!</h2>
+    </div>
+  </div>
+</div>
