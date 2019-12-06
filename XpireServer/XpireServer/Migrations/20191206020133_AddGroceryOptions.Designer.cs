@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XpireServer.Data;
 
 namespace XpireServer.Migrations
 {
     [DbContext(typeof(XpireServerContext))]
-    partial class XpireServerContextModelSnapshot : ModelSnapshot
+    [Migration("20191206020133_AddGroceryOptions")]
+    partial class AddGroceryOptions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,12 +40,7 @@ namespace XpireServer.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<long?>("UserId1")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("GroceryItem");
                 });
@@ -82,13 +79,6 @@ namespace XpireServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("XpireServer.Models.GroceryItem", b =>
-                {
-                    b.HasOne("XpireServer.Models.User", "User")
-                        .WithMany("GroceryItems")
-                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }

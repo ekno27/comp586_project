@@ -21,6 +21,7 @@ namespace XpireServer
                 try
                 {
                     GroceryItemSeedData.Initialize(services);
+                    GroceryOptionSeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {

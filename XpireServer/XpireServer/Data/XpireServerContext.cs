@@ -16,6 +16,7 @@ namespace XpireServer.Data
 
         public DbSet<XpireServer.Models.GroceryItem> GroceryItem { get; set; }
         public DbSet<XpireServer.Models.User> User { get; set; }
+        public DbSet<XpireServer.Models.GroceryOption> GroceryOption { get; set; }
 
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace XpireServer.Models
 {
@@ -11,5 +10,8 @@ namespace XpireServer.Models
         public string FirstName { get; set; }
 
         public string Email { get; set; }
+
+        public virtual ICollection<GroceryItem> GroceryItems { get; set; }
+
     }
 }
