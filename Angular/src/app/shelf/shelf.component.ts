@@ -11,14 +11,14 @@ import { ModalComponent } from '../modal/modal.component.js';
 })
 export class ShelfComponent implements OnInit {
 
-  items: Array<Object>;
+  items: Array<any>;
 
   testString: String
 
   groceryItemQuery: String;
 
 
-  groceryItemShelfLife: Number= null ;
+  groceryItemShelfLife: number= null ;
 
   groceryItemExpirationDate: String ="2020-02-12T00:00:00";
 
@@ -32,7 +32,50 @@ export class ShelfComponent implements OnInit {
   constructor( public groceryItemService: GroceryItemService) {
   }
 
+
+  // Date.prototype.addDays = function(days){
+  //   var date = new Date(this.valueOf());
+  //   date.setDate(date.getDate() + days);
+  //   return date;
+  // }
+  
+  // function getexpiration(datestamp,shelflife){
+  //   var expiration = datestamp.addDays(shelflife);
+  //   return expiration
+  // }
+  
+  // function getshelflife(expiration){
+  //   var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+  //   var firstDate = new Date();
+  //   var secondDate = expiration
+  
+  //   var diffDays = Math.ceil(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+  //   return diffDays;
+  // }
+  setExpirationDate(shelfLife: number) {
+    let x: Date =  new Date();
+    
+    x.setDate(x.getDate()+ shelfLife);
+    const stringX: String  = x.toISOString().split('T')[0] + 'T'  
+                        + x.toTimeString().split(' ')[0]; 
+    
+    return stringX;
+
+  }
+  formatExpirationDate(expirationDate: string) {
+    
+    var datetime =new Date(expirationDate);
+
+    return `${datetime.getDate()}/${datetime.getMonth()+1}/${datetime.getFullYear()}` 
+  
+  
+  }
   ngOnInit() {
+
+
+
+
+
     this.groceryItemService.getGroceryItems()
     .subscribe((data: any) => {
       this.items = data;
@@ -64,7 +107,7 @@ export class ShelfComponent implements OnInit {
     const item: Object =  {
       name: this.groceryItemQuery,
       shelfLife: this.groceryItemShelfLife, 
-      expirationDate: this.groceryItemExpirationDate,
+      expirationDate: this.setExpirationDate(this.groceryItemShelfLife),
       userId: 1
     }
 
@@ -76,10 +119,18 @@ export class ShelfComponent implements OnInit {
     })
   }
 
-  deleteItem() {
-    alert("will delete item");
-    this.items.pop()
-    console.log('item was deleted')
+  deleteItem(groceryItemId: number) {
+    const itemIndex = this.items.findIndex(arrayItem => arrayItem.id === groceryItemId);
+
+    if (itemIndex >-1) {
+      this.items.splice(itemIndex,1);
+      
+      }
+    else{
+    }
+    this.groceryItemService.deleteGroceryItem(groceryItemId)
+    .subscribe((data:any)=>{
+    })
     if(this.items.length === 0) {
       this.shelfIsEmpty = true
     }
@@ -89,7 +140,6 @@ export class ShelfComponent implements OnInit {
 
   getItemInfo(): Object {
     let query: String = this.groceryItemQuery;
-    console.log(query)
     let groceryOption = groceryOptions.data.find((element: { item_name: String; }) => element.item_name === query);
     if(groceryOption === undefined) {
       return undefined;

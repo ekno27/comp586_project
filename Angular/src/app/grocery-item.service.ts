@@ -22,10 +22,7 @@ export class GroceryItemService {
 
   }
 
-  getGroceryItems() {
-    return this.http.get("https://localhost:44366/api/GroceryItems/")
-  }
-
+  
   getShowModal(){
     return this.showModal;
   }
@@ -34,10 +31,17 @@ export class GroceryItemService {
 
   }
 
-  addGroceryItem(body) {
-    console.log(body);
+  getGroceryItems() {
+    return this.http.get("https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems");
+  }
 
-    return this.http.post("https://localhost:44366/api/GroceryItems/", body)
+
+  addGroceryItem(body:object) {
+    return this.http.post("https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems", body);
+  }
+
+  deleteGroceryItem(id: number) {
+    return this.http.delete(`https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems/${id}`);
   }
 
 }

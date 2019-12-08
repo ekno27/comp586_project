@@ -31,7 +31,7 @@
       <!-- Input Field -->
       <div id="input">
         <h5>Insert a food item here: </h5>
-        <input [(ngModel)]="groceryItemQuery" type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
+        <input [(ngModel)]="groceryItemQuery" type="text" id="inputField" class="form-control" required placeholder="ex. clams, milk, green beans, kimchi">
         
         <div class="mt-2 mb-2" *ngIf="showModal">
             <h5>Item not found! Please add shelf life in days:</h5>
@@ -58,8 +58,8 @@
         <tr *ngFor="let key of items">
           <td>{{key.name}}</td>
           <td>{{key.shelfLife}}</td>
-          <td class="exp-column exp-hd">{{key.expirationDate}} 
-            <button (click)="deleteItem()" class="delete btn btn-success" apiId="apiid"
+          <td class="exp-column exp-hd text-left">{{formatExpirationDate(key.expirationDate)}} 
+            <button (click)="deleteItem(key.id)" class="delete btn btn-success" apiId="apiid"
               loginId="loginid"><i class="fas fa-minus"></i>
             </button> 
             </td>
