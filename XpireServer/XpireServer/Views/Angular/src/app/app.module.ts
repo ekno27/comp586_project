@@ -8,21 +8,24 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShelfModule } from './shelf/shelf.module';
 
-import { ModalModule } from './modal/modal.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent, 
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ShelfModule,
-    ModalModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
+  entryComponents:[ModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

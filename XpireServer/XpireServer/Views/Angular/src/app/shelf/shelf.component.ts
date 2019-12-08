@@ -1,47 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import apiCalls from './../../api/api.js'
 import groceryOptions from './../../../groceryOptions.js';
-import {GroceryItemService} from './../grocery-item.service'
+import { GroceryItemService } from '../grocery-item.service.js';
+import { ModalComponent } from '../modal/modal.component.js';
+
 @Component({
   selector: 'app-shelf',
   templateUrl: './shelf.component.html',
   styleUrls: ['./shelf.component.scss']
 })
 export class ShelfComponent implements OnInit {
-  
+
   items: Array<Object>;
+
+  testString: String
 
   groceryItemQuery: String;
 
-  groceryItemShelfLife: Number;
+
+  groceryItemShelfLife: Number= null ;
 
   groceryItemExpirationDate: String ="2020-02-12T00:00:00";
 
   shelfIsEmpty: Boolean = true;
 
+
   showModal: Boolean = false;
 
   listIsempty: Function = ()=> {return this.items.length > 0};
 
-  constructor( ) {
+  constructor( public groceryItemService: GroceryItemService) {
   }
 
-  async ngOnInit() {
-    // var x = this.groceryItemService.getGroceryItems()
-    console.log
-
-    await apiCalls.getItemsAPI().then((response: any)=> {
-      this.items = response.data
-    })
-    if(this.items.length > 0) {
-      this.shelfIsEmpty = false
-    }
-
+  ngOnInit() {
+    this.groceryItemService.getGroceryItems()
+    .subscribe((data: any) => {
+      this.items = data;
+      if(this.items.length > 0) {
+        this.shelfIsEmpty = false
+      }
+    });
   }
 
   submit() {
     let itemInfo: Object = this.getItemInfo();
-    itemInfo === undefined ? this.showModal = true : this.addItem();
+    if(this.groceryItemShelfLife !== null) {
+      this.addItem();
+    }
+    else {
+      itemInfo === undefined ? this.showModal = true : this.addItem();
+    }
+  }
+
+  handleModal(value: boolean) {
+    this.showModal = value;
+    this.groceryItemService.setShowModal(value);
   }
   
 
@@ -54,27 +67,24 @@ export class ShelfComponent implements OnInit {
       expirationDate: this.groceryItemExpirationDate,
       userId: 1
     }
-    console.log(item);
 
-    apiCalls.addItemAPI(item)
-    .then((response: any)=>{
-      console.log(response.data);
-      this.items.push(response.data);
-      this.shelfIsEmpty = false
-    }).catch((err: any)=> {
-      console.log(err);
-      console.error(err);
+    this.groceryItemService.addGroceryItem(item)
+    .subscribe((data: any)=> {
+      this.items.push(data);
+      this.shelfIsEmpty= false;
+      this.groceryItemShelfLife = null;
     })
   }
 
   deleteItem() {
-    alert("will delete item")
+    alert("will delete item");
     this.items.pop()
     console.log('item was deleted')
     if(this.items.length === 0) {
       this.shelfIsEmpty = true
     }
-  } 
+  }
+  
 
 
   getItemInfo(): Object {

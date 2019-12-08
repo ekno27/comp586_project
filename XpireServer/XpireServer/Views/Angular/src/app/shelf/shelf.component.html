@@ -19,9 +19,12 @@
       <p class="text-success">Xpire<i class="fab fa-pagelines"></i></p>
     </div>
   </div> <!-- end of row-->
-  gjfjfjfj
-  <div><app-modal></app-modal></div>
   
+  <!-- Modal -->
+  <div>
+    <app-modal *ngIf="showModal"></app-modal>
+  </div>
+  <!-- End of modal -->
 
   <div class="row">
     <div id="miniWrapper">
@@ -29,6 +32,13 @@
       <div id="input">
         <h5>Insert a food item here: </h5>
         <input [(ngModel)]="groceryItemQuery" type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
+        
+        <div class="mt-2 mb-2" *ngIf="showModal">
+            <h5>Item not found! Please add shelf life in days:</h5>
+            <input [(ngModel)]="groceryItemShelfLife" type="number" id="inputField" class="form-control" maxlength="4" required placeholder="ex. 2">
+        </div>
+        
+
       </div>
       <!-- Submit Button -->
       <div class="text-right">
@@ -37,7 +47,6 @@
         </button>
       </div>
     </div>
-
     <!-- displays the user's list of items -->
     <div class="container" id="userList">
       <table *ngIf="!shelfIsEmpty" >

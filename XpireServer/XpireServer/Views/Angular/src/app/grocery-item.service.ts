@@ -26,7 +26,18 @@ export class GroceryItemService {
     return this.http.get("https://localhost:44366/api/GroceryItems/")
   }
 
-  getTestItem() {
-    return "sigh ok here we go"
+  getShowModal(){
+    return this.showModal;
   }
+  setShowModal(value: Boolean){
+    this.showModal = value;
+
+  }
+
+  addGroceryItem(body) {
+    console.log(body);
+
+    return this.http.post("https://localhost:44366/api/GroceryItems/", body)
+  }
+
 }
