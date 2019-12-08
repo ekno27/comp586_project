@@ -3,7 +3,7 @@
   <ul class="nav  d-flex flex-row-reverse ">
 
     <li class="nav-item pull-right">
-      <a class="nav-link" [routerLink]="['']">Log Out</a>
+      <a class="nav-link" routerLink="['']">Log Out</a>
     </li>
 
     <li class="nav-item ">
@@ -12,24 +12,27 @@
   </ul>
 </div>
 <div class="container" id="mainWrapper">
+
   <!-- Header -->
   <div class="row">
     <div id="header">
       <p class="text-success">Xpire<i class="fab fa-pagelines"></i></p>
     </div>
   </div> <!-- end of row-->
-
+  gjfjfjfj
+  <div><app-modal></app-modal></div>
+  
 
   <div class="row">
     <div id="miniWrapper">
       <!-- Input Field -->
       <div id="input">
         <h5>Insert a food item here: </h5>
-        <input [(ngModel)]="groceryItem" type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
+        <input [(ngModel)]="groceryItemQuery" type="text" id="inputField" class="form-control" required placeholder="ex. cabbage">
       </div>
       <!-- Submit Button -->
       <div class="text-right">
-        <button type="button" class="btn btn-outline-success" (click)="addItem()">Submit
+        <button type="button" class="btn btn-outline-success" (click)="submit()">Submit
           <i class="far fa-arrow-alt-circle-up"></i>
         </button>
       </div>
@@ -54,6 +57,7 @@
         </tr>
       </table>
       <h2 *ngIf="shelfIsEmpty" id="empty-prompt">There are currently no items on your list!</h2>
+      
     </div>
   </div>
 </div>

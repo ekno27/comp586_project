@@ -4,21 +4,24 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ShelfComponent } from './shelf/shelf.component';
-import {ModalComponent} from './modal/modal.component'
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ShelfModule } from './shelf/shelf.module';
+
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ShelfComponent,
-    ModalComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ShelfModule,
+    ModalModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
