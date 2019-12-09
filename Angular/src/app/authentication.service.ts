@@ -20,9 +20,9 @@ export class AuthenticationService {
 
   async isAuthenticated() {
     console.log('getting auth token');
-    console.log(!!(this.oktaAuth.tokenManager.get('accessToken')))
-    // return !!(await this.oktaAuth.tokenManager.get('accessToken'));
-    return false;
+    // console.log(!!(this.oktaAuth.tokenManager.get('accessToken')))
+    return !!(await this.oktaAuth.tokenManager.get('accessToken'));
+    // return false;
   }
   login() {
     console.log('signing in');
