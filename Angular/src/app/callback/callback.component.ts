@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 export class CallbackComponent implements OnInit {
 
   constructor(private okta: AuthenticationService, router: Router) {
-    okta.handleAuthentication();
-    router.navigate(['/shelf']);
+    okta.handleAuthentication().then(()=> {
+      router.navigate(['/shelf']);
+    });
+    
   }
 
   ngOnInit() {

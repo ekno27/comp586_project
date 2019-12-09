@@ -19,10 +19,8 @@ export class AuthenticationService {
   constructor(private router: Router) { }
 
   async isAuthenticated() {
-    console.log('getting auth token');
-    // console.log(!!(this.oktaAuth.tokenManager.get('accessToken')))
-    return !!(await this.oktaAuth.tokenManager.get('accessToken'));
-    // return false;
+    
+    return !!(this.oktaAuth.tokenManager.get('accessToken'));
   }
   login() {
     console.log('signing in');
