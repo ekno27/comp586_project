@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {ShelfComponent} from './shelf/shelf.component';
-import {ModalComponent} from './modal/modal.component';
-
 import {AppComponent} from './app.component'
+import { CallbackComponent } from './callback/callback.component';
+import { OktaAuthGuard } from './auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -13,16 +13,19 @@ const routes: Routes = [
   },
   {
     path:'shelf', 
-    component: ShelfComponent
+    component: ShelfComponent,
+    canActivate: [OktaAuthGuard]
   },
   {
     path:'login',
     component: LoginComponent
   },
   {
-    path:'modal',
-    component: ModalComponent
-  }
+    path: 'callback',
+    component: CallbackComponent,
+  },
+  
+  
   
 ];
 

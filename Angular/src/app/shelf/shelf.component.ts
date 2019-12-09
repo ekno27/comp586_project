@@ -3,6 +3,7 @@ import apiCalls from './../../api/api.js'
 import groceryOptions from './../../../groceryOptions.js';
 import { GroceryItemService } from '../grocery-item.service.js';
 import { ModalComponent } from '../modal/modal.component.js';
+import { AuthenticationService } from '../authentication.service.js';
 
 @Component({
   selector: 'app-shelf',
@@ -29,29 +30,9 @@ export class ShelfComponent implements OnInit {
 
   listIsempty: Function = ()=> {return this.items.length > 0};
 
-  constructor( public groceryItemService: GroceryItemService) {
+  constructor( public groceryItemService: GroceryItemService, public oktaAuth: AuthenticationService ) {
   }
 
-
-  // Date.prototype.addDays = function(days){
-  //   var date = new Date(this.valueOf());
-  //   date.setDate(date.getDate() + days);
-  //   return date;
-  // }
-  
-  // function getexpiration(datestamp,shelflife){
-  //   var expiration = datestamp.addDays(shelflife);
-  //   return expiration
-  // }
-  
-  // function getshelflife(expiration){
-  //   var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-  //   var firstDate = new Date();
-  //   var secondDate = expiration
-  
-  //   var diffDays = Math.ceil(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-  //   return diffDays;
-  // }
   setExpirationDate(shelfLife: number) {
     let x: Date =  new Date();
     
