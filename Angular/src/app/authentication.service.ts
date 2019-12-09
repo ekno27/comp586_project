@@ -18,9 +18,13 @@ export class AuthenticationService {
 
   constructor(private router: Router) { }
 
-  async isAuthenticated() {
-    
-    return !!(this.oktaAuth.tokenManager.get('accessToken'));
+  isAuthenticated() {
+    var userInfo =JSON.parse(localStorage.getItem('okta-token-storage'))
+    console.log(userInfo)
+    if (Object.keys(userInfo).length !== 0) {
+      return true;
+    }
+    return false;    
   }
   login() {
     console.log('signing in');

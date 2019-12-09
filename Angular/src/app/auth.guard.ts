@@ -13,12 +13,17 @@ export class OktaAuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    var userInfo  =JSON.parse(localStorage.getItem('okta-token-storage'))
-    console.log(userInfo)
-    if (Object.keys(userInfo).length !== 0) {
+    // var userInfo =JSON.parse(localStorage.getItem('okta-token-storage'))
+    // console.log(userInfo)
+    // if (Object.keys(userInfo).length !== 0) {
+    //   return true;
+    // }
+    // // Redirect to login flow.
+    // this.oktaAuth.login();
+    // return false;
+    if(this.authenticated) {
       return true;
     }
-    // Redirect to login flow.
     this.oktaAuth.login();
     return false;
   }
