@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XpireServer.Data;
 using XpireServer.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace XpireServer.Controllers
 {
@@ -30,6 +31,7 @@ namespace XpireServer.Controllers
 
         // GET: api/GroceryItems/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<GroceryItem>> GetGroceryItem(long id)
         {
             var groceryItem = await _context.GroceryItem.FindAsync(id);
