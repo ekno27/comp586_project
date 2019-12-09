@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as OktaAuth from '@okta/okta-auth-js';
+import { decode } from 'punycode';
 
 
 @Injectable({
@@ -16,29 +17,54 @@ export class AuthenticationService {
     pkce: true
   });
 
-  constructor(private router: Router) { }
+  firstName: string;
+  lastName: string;
+  email: string
+  fullName: string;
+
+  constructor(private router: Router) {
+    
+  }
 
   isAuthenticated() {
-    var userInfo =JSON.parse(localStorage.getItem('okta-token-storage'))
+    var userInfo =JSON.parse(localStorage.getItem('okta-token-storage'));
     console.log(userInfo)
     if (Object.keys(userInfo).length !== 0) {
       return true;
     }
     return false;    
   }
+
+  getAccessToken() {
+    var userInfo = JSON.parse(localStorage.getItem('okta-token-storage'));
+    return userInfo.accessToken.accessToken;
+  }
+
+  getIdToken() {
+    var userInfo = JSON.parse(localStorage.getItem('okta-token-storage'));
+    return userInfo.idToken.idToken
+  }
+
+  
   login() {
     console.log('signing in');
     this.oktaAuth.token.getWithRedirect({
       scopes:['openid', 'email','profile']
     });
   }
+  
+
 
   async handleAuthentication() {
     console.log('handling auth');
     const tokens = await this.oktaAuth.token.parseFromUrl();
     console.log(tokens);
     tokens.forEach(token => {
-      if (token.idToken) {
+      if (token.idToken) {  
+        const decodedToken =  this.oktaAuth.token.decode(token.idToken); 
+        localStorage.setItem("firstName", decodedToken.payload.name.split(" ")[0]);
+        localStorage.setItem("lastName", decodedToken.payload.name.split(" ")[1]);
+        localStorage.setItem("email", decodedToken.payload.email);
         this.oktaAuth.tokenManager.add('idToken', token);
       }
       if (token.accessToken) {
@@ -50,6 +76,9 @@ export class AuthenticationService {
   async logout() {
     console.log(this.oktaAuth.tokenManager);
     this.oktaAuth.tokenManager.clear();
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
+    localStorage.removeItem("email");
     await this.oktaAuth.signOut();
     this.router.navigate(['/login'])
   }

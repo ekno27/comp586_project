@@ -14,17 +14,17 @@ export class ShelfComponent implements OnInit {
 
   items: Array<any>;
 
+  fullName: string;
+
+  email: string;
+
   testString: String
 
   groceryItemQuery: String;
 
-
-  groceryItemShelfLife: number= null ;
-
-  groceryItemExpirationDate: String ="2020-02-12T00:00:00";
+  groceryItemShelfLife: number= null;
 
   shelfIsEmpty: Boolean = true;
-
 
   showModal: Boolean = false;
 
@@ -52,12 +52,9 @@ export class ShelfComponent implements OnInit {
   
   }
   ngOnInit() {
-
-
-
-
-
-    this.groceryItemService.getGroceryItems()
+    this.fullName = localStorage.getItem("firstName") +" " +localStorage.getItem("lastName");
+    this.email = localStorage.getItem("email");
+    this.groceryItemService.getGroceryItems(this.oktaAuth.getAccessToken())
     .subscribe((data: any) => {
       this.items = data;
       if(this.items.length > 0) {
@@ -92,7 +89,7 @@ export class ShelfComponent implements OnInit {
       userId: 1
     }
 
-    this.groceryItemService.addGroceryItem(item)
+    this.groceryItemService.addGroceryItem(item, this.oktaAuth.getAccessToken())
     .subscribe((data: any)=> {
       this.items.push(data);
       this.shelfIsEmpty= false;
@@ -109,8 +106,9 @@ export class ShelfComponent implements OnInit {
       }
     else{
     }
-    this.groceryItemService.deleteGroceryItem(groceryItemId)
+    this.groceryItemService.deleteGroceryItem(groceryItemId, this.oktaAuth.getAccessToken())
     .subscribe((data:any)=>{
+      console.log(data)
     })
     if(this.items.length === 0) {
       this.shelfIsEmpty = true
