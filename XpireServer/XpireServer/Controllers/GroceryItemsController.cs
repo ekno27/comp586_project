@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XpireServer.Data;
 using XpireServer.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace XpireServer.Controllers
 {
@@ -24,7 +23,6 @@ namespace XpireServer.Controllers
 
         // GET: api/GroceryItems
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<GroceryItem>>> GetGroceryItem()
         {
             return await _context.GroceryItem.ToListAsync();
@@ -32,7 +30,6 @@ namespace XpireServer.Controllers
 
         // GET: api/GroceryItems/5
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<ActionResult<GroceryItem>> GetGroceryItem(long id)
         {
             var groceryItem = await _context.GroceryItem.FindAsync(id);
@@ -81,8 +78,6 @@ namespace XpireServer.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        [Authorize]
-
         public async Task<ActionResult<GroceryItem>> PostGroceryItem(GroceryItem groceryItem)
         {
             _context.GroceryItem.Add(groceryItem);
@@ -93,8 +88,6 @@ namespace XpireServer.Controllers
 
         // DELETE: api/GroceryItems/5
         [HttpDelete("{id}")]
-        [Authorize]
-
         public async Task<ActionResult<GroceryItem>> DeleteGroceryItem(long id)
         {
             var groceryItem = await _context.GroceryItem.FindAsync(id);
