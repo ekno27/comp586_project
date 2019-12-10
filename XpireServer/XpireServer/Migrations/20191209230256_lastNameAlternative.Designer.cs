@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using XpireServer.Data;
 
 namespace XpireServer.Migrations
 {
     [DbContext(typeof(XpireServerContext))]
-    partial class XpireServerContextModelSnapshot : ModelSnapshot
+    [Migration("20191209230256_lastNameAlternative")]
+    partial class lastNameAlternative
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
