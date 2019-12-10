@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XpireServer.Data;
 using XpireServer.Models;
-using Microsoft.AspNetCore.Authorization;
-
 
 namespace XpireServer.Controllers
 {
@@ -30,6 +28,20 @@ namespace XpireServer.Controllers
             return await _context.User.ToListAsync();
         }
 
+        //GET: api/email/admin@aol.com
+        [HttpGet("email/{email}")]
+
+        public async Task<ActionResult<User>> GetUser(string email)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return user;
+        }
+
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
@@ -41,21 +53,6 @@ namespace XpireServer.Controllers
                 return NotFound();
             }
 
-            return user;
-        }
-
-        //GET: api/email/admin@aol.com
-        [HttpGet("email/{email}")]
-        [Authorize]
-        
-        public async Task<ActionResult<User>> GetUser(string email)
-        {
-            var user = await _context.User.SingleOrDefaultAsync(u => u.Email == email);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
             return user;
         }
 
@@ -95,7 +92,6 @@ namespace XpireServer.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             _context.User.Add(user);

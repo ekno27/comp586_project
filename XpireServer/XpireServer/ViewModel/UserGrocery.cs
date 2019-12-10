@@ -7,11 +7,12 @@ namespace XpireServer.ViewModel
 {
     public class UserGrocery
     {
-        public string email;
-        public string firstName;
-        public string groceryItem;
-        public string shelfLife;
-        public string expirationDate;
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string GroceryItem { get; set; }
+        public int ShelfLife { get; set; }
+        public System.DateTime ExpirationDate { get; set; }
 
     }
 }

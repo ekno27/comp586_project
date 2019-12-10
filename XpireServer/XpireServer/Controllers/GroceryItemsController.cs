@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XpireServer.Data;
 using XpireServer.Models;
+using XpireServer.ViewModel;
 
 namespace XpireServer.Controllers
 {
@@ -40,6 +41,29 @@ namespace XpireServer.Controllers
             }
 
             return groceryItem;
+        }
+
+        [HttpGet("User/{id}")]
+        public UserGrocery[] GetGroceryItemViewModel(long id)
+        {
+            var groceryItems = _context.GroceryItem.Where(item => item.UserId == id).ToArray();
+            var user = _context.User.Find(id);
+            var list = new List<UserGrocery>();
+            foreach(GroceryItem item in groceryItems)
+            {
+                UserGrocery response = new UserGrocery
+                {
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    GroceryItem = item.Name,
+                    ShelfLife = item.ShelfLife,
+                    ExpirationDate = item.ExpirationDate
+                };
+                list.Add(response);
+            }
+            return list.ToArray();
+
         }
 
         // PUT: api/GroceryItems/5
