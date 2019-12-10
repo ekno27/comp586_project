@@ -13,7 +13,7 @@ export class AuthenticationService {
     url: 'https://dev-307965.okta.com',
     clientId: '0oa25huq0pTxLbiRR357',
     issuer: 'https://dev-307965.okta.com/oauth2/default',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://ec2-3-82-96-248.compute-1.amazonaws.com:4200/callback',
     pkce: true
   });
 

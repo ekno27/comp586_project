@@ -17,7 +17,7 @@ export class UserService {
       })
     }
     // if the user is in the db, just get their id
-    return this.http.get(`https://localhost:44366/api/Users/email/${email}`, httpOptions);
+    return this.http.get(`https://xpireserver20191207050549.azurewebsites.net/api/Users/email/${email}`, httpOptions);
     //else, add em to the db
   }
 
@@ -28,7 +28,7 @@ export class UserService {
         'Authorization': `bearer ${accessToken}`
       })
     }
-    return this.http.post("https://localhost:44366/api/Users", body, httpOptions)
+    return this.http.post("https://xpireserver20191207050549.azurewebsites.net/api/Users", body, httpOptions)
 
   }
 }

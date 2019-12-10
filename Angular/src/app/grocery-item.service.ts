@@ -38,7 +38,7 @@ export class GroceryItemService {
         'Authorization': `bearer ${accessToken}`
       })
     }
-    return this.http.get("https://localhost:44366/api/GroceryItems/", httpOptions);
+    return this.http.get("https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems/", httpOptions);
   }
 
 
@@ -49,7 +49,7 @@ export class GroceryItemService {
         'Authorization': `bearer ${accessToken}`
       })
     }
-    return this.http.post("https://localhost:44366/api/GroceryItems/", body, httpOptions);
+    return this.http.post("https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems/", body, httpOptions);
   }
 
   deleteGroceryItem(id: number, accessToken: string) {
@@ -59,7 +59,7 @@ export class GroceryItemService {
         'Authorization': `bearer ${accessToken}`
       })
     }
-    return this.http.delete(`https://localhost:44366/api/GroceryItems/${id}`, httpOptions);
+    return this.http.delete(`https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems/${id}`, httpOptions);
   }
 
 }
