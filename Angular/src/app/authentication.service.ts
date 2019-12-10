@@ -28,12 +28,12 @@ export class AuthenticationService {
 
   isAuthenticated() {
     var userInfo =JSON.parse(localStorage.getItem('okta-token-storage'));
-    console.log(userInfo)
     if (Object.keys(userInfo).length !== 0) {
       return true;
     }
     return false;    
   }
+
 
   getAccessToken() {
     var userInfo = JSON.parse(localStorage.getItem('okta-token-storage'));
@@ -47,7 +47,6 @@ export class AuthenticationService {
 
   
   login() {
-    console.log('signing in');
     this.oktaAuth.token.getWithRedirect({
       scopes:['openid', 'email','profile']
     });
@@ -56,9 +55,7 @@ export class AuthenticationService {
 
 
   async handleAuthentication() {
-    console.log('handling auth');
     const tokens = await this.oktaAuth.token.parseFromUrl();
-    console.log(tokens);
     tokens.forEach(token => {
       if (token.idToken) {  
         const decodedToken =  this.oktaAuth.token.decode(token.idToken); 
@@ -74,11 +71,11 @@ export class AuthenticationService {
   }
 
   async logout() {
-    console.log(this.oktaAuth.tokenManager);
     this.oktaAuth.tokenManager.clear();
     localStorage.removeItem("firstName");
     localStorage.removeItem("lastName");
     localStorage.removeItem("email");
+    localStorage.removeItem("id");
     await this.oktaAuth.signOut();
     this.router.navigate(['/login'])
   }

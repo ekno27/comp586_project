@@ -59,7 +59,6 @@ export class GroceryItemService {
         'Authorization': `bearer ${accessToken}`
       })
     }
-    console.log(httpOptions)
     return this.http.delete(`https://localhost:44366/api/GroceryItems/${id}`, httpOptions);
   }
 
