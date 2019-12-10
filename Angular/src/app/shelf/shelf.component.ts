@@ -86,7 +86,7 @@ export class ShelfComponent implements OnInit {
       name: this.groceryItemQuery,
       shelfLife: this.groceryItemShelfLife, 
       expirationDate: this.setExpirationDate(this.groceryItemShelfLife),
-      userId: 1
+      userId: parseInt(localStorage.getItem('id'))
     }
 
     this.groceryItemService.addGroceryItem(item, this.oktaAuth.getAccessToken())
