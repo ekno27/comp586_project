@@ -16,6 +16,8 @@ export class CallbackComponent implements OnInit {
       .subscribe((data: any)=>{
         console.log('found user')
         localStorage.setItem('id', data.id)
+        router.navigate(['/shelf']);
+
       },
       (error:any)=>{
         console.log('couldnt find user')
@@ -28,9 +30,10 @@ export class CallbackComponent implements OnInit {
         user.addUser(body, okta.getAccessToken())
           .subscribe((data:any)=> {
             localStorage.setItem('id', data.id)
+            router.navigate(['/shelf']);
+
           })
       })
-      router.navigate(['/shelf']);
     });
     
   }

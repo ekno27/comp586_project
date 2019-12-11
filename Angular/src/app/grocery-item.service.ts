@@ -31,14 +31,14 @@ export class GroceryItemService {
 
   }
 
-  getGroceryItems(accessToken: string) {
+  getGroceryItems(id: number,accessToken: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': `bearer ${accessToken}`
       })
     }
-    return this.http.get("https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems/", httpOptions);
+    return this.http.get(`https://xpireserver20191207050549.azurewebsites.net/api/GroceryItems/User/${id}`, httpOptions);
   }
 
 

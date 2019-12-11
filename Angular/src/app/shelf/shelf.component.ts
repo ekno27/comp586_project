@@ -52,11 +52,11 @@ export class ShelfComponent implements OnInit {
   
   }
   ngOnInit() {
-    this.fullName = localStorage.getItem("firstName") +" " +localStorage.getItem("lastName");
-    this.email = localStorage.getItem("email");
-    this.groceryItemService.getGroceryItems(this.oktaAuth.getAccessToken())
+    this.groceryItemService.getGroceryItems(parseInt(localStorage.getItem('id')),this.oktaAuth.getAccessToken())
     .subscribe((data: any) => {
-      this.items = data;
+      this.items = data.groceryItems;
+      this.fullName = data.firstName +" " +data.lastName;
+      this.email =data.lastName;
       if(this.items.length > 0) {
         this.shelfIsEmpty = false
       }
@@ -91,6 +91,8 @@ export class ShelfComponent implements OnInit {
 
     this.groceryItemService.addGroceryItem(item, this.oktaAuth.getAccessToken())
     .subscribe((data: any)=> {
+      data.groceryItem = data.name;
+      console.log(data)
       this.items.push(data);
       this.shelfIsEmpty= false;
       this.groceryItemShelfLife = null;

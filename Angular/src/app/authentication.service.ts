@@ -13,7 +13,7 @@ export class AuthenticationService {
     url: 'https://dev-307965.okta.com',
     clientId: '0oa25huq0pTxLbiRR357',
     issuer: 'https://dev-307965.okta.com/oauth2/default',
-    redirectUri: 'https://xpire-eac-ef7c41.netlify.com/callback',
+    redirectUri: 'http://localhost:4200/callback',
     pkce: true
   });
 

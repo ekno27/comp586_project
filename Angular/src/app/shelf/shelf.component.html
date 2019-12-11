@@ -47,8 +47,10 @@
         </button>
       </div>
     </div>
+
     <!-- displays the user's list of items -->
     <div class="container" id="userList">
+      <h2>{{fullName}}'s Grocery List</h2>
       <table *ngIf="!shelfIsEmpty" >
         <tr>
           <th>Name</th>
