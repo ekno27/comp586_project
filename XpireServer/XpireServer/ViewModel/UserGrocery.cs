@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using XpireServer.Models;
 
 namespace XpireServer.ViewModel
 {
@@ -9,10 +10,9 @@ namespace XpireServer.ViewModel
     {
         public string Email { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string GroceryItem { get; set; }
-        public int ShelfLife { get; set; }
-        public System.DateTime ExpirationDate { get; set; }
+        public string LastName { get; set; } 
+        public GroceryItem[]  groceryItems {get;set;}
+
 
     }
 }

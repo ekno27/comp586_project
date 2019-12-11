@@ -44,26 +44,18 @@ namespace XpireServer.Controllers
         }
 
         [HttpGet("User/{id}")]
-        public UserGrocery[] GetGroceryItemViewModel(long id)
+        public UserGrocery GetGroceryItemViewModel(long id)
         {
-            var groceryItems = _context.GroceryItem.Where(item => item.UserId == id).ToArray();
+            var groceryOptions = _context.GroceryItem.Where(item => item.UserId == id).ToArray();
             var user = _context.User.Find(id);
-            var list = new List<UserGrocery>();
-            foreach(GroceryItem item in groceryItems)
+            UserGrocery response = new UserGrocery
             {
-                UserGrocery response = new UserGrocery
-                {
-                    Email = user.Email,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    GroceryItem = item.Name,
-                    ShelfLife = item.ShelfLife,
-                    ExpirationDate = item.ExpirationDate
-                };
-                list.Add(response);
-            }
-            return list.ToArray();
-
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                groceryItems = groceryOptions
+            };
+            return response;
         }
 
         // PUT: api/GroceryItems/5
