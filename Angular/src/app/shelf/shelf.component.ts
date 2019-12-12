@@ -54,6 +54,8 @@ export class ShelfComponent implements OnInit {
   ngOnInit() {
     this.groceryItemService.getGroceryItems(parseInt(localStorage.getItem('id')),this.oktaAuth.getAccessToken())
     .subscribe((data: any) => {
+      console.log('viewModel data:')
+      console.log(data);
       this.items = data.groceryItems;
       this.fullName = data.firstName +" " +data.lastName;
       this.email =data.lastName;
@@ -92,6 +94,7 @@ export class ShelfComponent implements OnInit {
     this.groceryItemService.addGroceryItem(item, this.oktaAuth.getAccessToken())
     .subscribe((data: any)=> {
       data.groceryItem = data.name;
+      console.log("added item:")
       console.log(data)
       this.items.push(data);
       this.shelfIsEmpty= false;
@@ -110,6 +113,7 @@ export class ShelfComponent implements OnInit {
     }
     this.groceryItemService.deleteGroceryItem(groceryItemId, this.oktaAuth.getAccessToken())
     .subscribe((data:any)=>{
+      console.log("deleted item: ");
       console.log(data)
     })
     if(this.items.length === 0) {
