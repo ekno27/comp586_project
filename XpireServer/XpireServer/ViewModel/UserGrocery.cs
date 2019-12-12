@@ -13,6 +13,5 @@ namespace XpireServer.ViewModel
         public string LastName { get; set; } 
         public GroceryItem[]  groceryItems {get;set;}
 
-
     }
 }

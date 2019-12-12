@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XpireServer.Data;
 using XpireServer.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace XpireServer.Controllers
 {
@@ -30,7 +31,7 @@ namespace XpireServer.Controllers
 
         //GET: api/email/admin@aol.com
         [HttpGet("email/{email}")]
-
+        [Authorize]
         public async Task<ActionResult<User>> GetUser(string email)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Email == email);
