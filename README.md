@@ -9,7 +9,7 @@ Create an account and keep track of expiration dates on perishable foods by logg
 Angular is used to fill the view portion of the MVC. 
 
 ## MVC
-ASP .net is utilized to create an MVC Application following standard MVC folder structure.
+ASP .net is utilized to create the Model and Controller portion Application, which follows standard MVC folder structure.
 
 ## Authentication/ Authorization / Single Sign On
 the Okta Identity Provider is used to authenticate users and to only allow authenticated users to use API.
