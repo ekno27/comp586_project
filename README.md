@@ -26,12 +26,12 @@ Dependency Injections come as a default for Angular and ASP .net, found all thro
 Netlify was used to host the Angular Application in netlify, which allows for continous deployment through github. 
 Microsoft Azure was used to deploy the backend.
 
-### How to use
+### How To Use
 1. Sign in / Register using okta by pressing the "login with okta" button. 
 2. add items to the grocery list, if the item is not in the database the application will ask to enter a shelf life (in how many days
 the product will expire)
 3. Keep adding and deleting items
 
-### About the "2 contributors"
-A pull request from dependabot, a github product that deals dependency updates was merged to fix a dependency vulnerability. The pull request can be seen here: https://github.com/ekno27/comp586_project/pull/5
+### About The "2 contributors"
+A pull request from dependabot, a github product that deals dependency updates was merged to fix a dependency vulnerability. The pull request can be seen here: https://github.com/ekno27/comp586_project/pull/5, which is where this "2nd contributor" comes from. 
 
