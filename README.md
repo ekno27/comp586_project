@@ -32,3 +32,6 @@ Microsoft Azure was used to deploy the backend.
 the product will expire)
 3. Keep adding and deleting items
 
+### About the "2 contributors"
+A pull request from dependabot, a github product that deals dependency updates was merged to fix a dependency vulnerability. The pull request can be seen here: https://github.com/ekno27/comp586_project/pull/5
+
